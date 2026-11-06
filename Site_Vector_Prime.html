@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Vector Prime, da ATTA: inteligência de liquidez para CFOs e gestores financeiros. Caixa livre projetado, custo efetivo de antecipação, cessão e gravame na registradora, numa só visão independente." />
+    <link rel="icon" href="data:," />
+    <title>Vector Prime | Inteligência de Liquidez para CFOs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --bg-soft: #eef4f0;
+        --bg-softer: #f7faf8;
+        --surface: #ffffff;
+        --ink: #12211b;
+        --ink-2: #40534a;
+        --ink-3: #63766c;
+        --line: #dbe6df;
+        --green-900: #0a2e23;
+        --green-800: #0c3a2c;
+        --green: #0e6b4a;
+        --green-bright: #128a5e;
+        --mint: #d9efe2;
+        --amber: #f0a51e;
+        --amber-ink: #7a5200;
+        --amber-soft: #fdf0d3;
+        --dark-bg: #0a2e23;
+        --dark-ink: #eef7f1;
+        --dark-ink-2: #b9d2c3;
+        --dark-line: rgba(255, 255, 255, 0.14);
+        --shadow: 0 24px 48px -24px rgba(10, 46, 35, 0.28);
+        --shadow-sm: 0 10px 24px -14px rgba(10, 46, 35, 0.25);
+        --header-bg: rgba(255, 255, 255, 0.92);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0c1511;
+          --bg-soft: #101d16;
+          --bg-softer: #0e1913;
+          --surface: #132219;
+          --ink: #edf6f0;
+          --ink-2: #b7cdc0;
+          --ink-3: #8ba295;
+          --line: #24382d;
+          --green: #2fbf8f;
+          --green-bright: #35cf9a;
+          --mint: #173527;
+          --amber-soft: #3a2c08;
+          --amber-ink: #f5c65c;
+          --shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.6);
+          --shadow-sm: 0 10px 24px -14px rgba(0, 0, 0, 0.55);
+          --header-bg: rgba(12, 21, 17, 0.92);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        * { animation: none !important; transition: none !important; }
+      }
+      body {
+        margin: 0;
+        font-family: "Manrope", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        font-size: 17px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1, h2, h3, h4 {
+        font-family: "Sora", "Manrope", sans-serif;
+        line-height: 1.15;
+        margin: 0;
+        letter-spacing: -0.01em;
+      }
+      p { margin: 0; }
+      a { color: var(--green); }
+      img, svg { max-width: 100%; }
+      .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+      section { padding: 96px 0; scroll-margin-top: 84px; }
+      .section-soft { background: var(--bg-soft); }
+      .eyebrow {
+        display: inline-block;
+        font-family: "Sora", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--green);
+        margin-bottom: 16px;
+      }
+      .section-head { max-width: 720px; margin-bottom: 52px; }
+      .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+      .section-head h2 { font-size: clamp(30px, 4vw, 42px); font-weight: 700; margin-bottom: 14px; }
+      .section-head p { color: var(--ink-2); font-size: 18px; }
+
+      /* Header */
+      header {
+        position: sticky; top: 0; z-index: 60;
+        background: var(--header-bg);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+      .header-in { display: flex; align-items: center; gap: 28px; height: 72px; }
+      .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--ink); flex: none; }
+      .brand-mark {
+        width: 38px; height: 38px; border-radius: 11px;
+        background: var(--green-800);
+        display: grid; place-items: center;
+      }
+      @media (prefers-color-scheme: dark) { .brand-mark { background: var(--green); } }
+      .brand-name { font-family: "Sora", sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -0.01em; line-height: 1; }
+      .brand-name span { color: var(--green); }
+      .brand-sub { display: block; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
+      nav.main-nav { margin-left: auto; }
+      nav.main-nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
+      nav.main-nav a { color: var(--ink-2); text-decoration: none; font-weight: 600; font-size: 15.5px; }
+      nav.main-nav a:hover { color: var(--green); }
+      .header-cta { flex: none; margin-left: 6px; }
+      .menu-btn {
+        display: none; margin-left: auto; flex: none;
+        width: 44px; height: 44px; border-radius: 10px;
+        border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+        cursor: pointer; align-items: center; justify-content: center;
+      }
+
+      .btn {
+        display: inline-flex; align-items: center; gap: 9px;
+        font-family: "Sora", sans-serif; font-weight: 700; font-size: 16px;
+        padding: 14px 26px; border-radius: 999px; text-decoration: none;
+        border: 1.5px solid transparent; cursor: pointer; transition: transform 0.15s ease, background 0.15s ease;
+      }
+      .btn:active { transform: scale(0.98); }
+      .btn-primary { background: var(--green); color: #ffffff; }
+      .btn-primary:hover { background: var(--green-bright); }
+      .btn-amber { background: var(--amber); color: #231a00; }
+      .btn-amber:hover { background: #ffb62e; }
+      .btn-ghost { border-color: var(--line); color: var(--ink); background: transparent; }
+      .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+      .btn-sm { padding: 10px 20px; font-size: 14.5px; }
+
+      /* Hero */
+      .hero { padding: 84px 0 96px; background: var(--bg-softer); overflow: hidden; }
+      .hero-grid { display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 56px; align-items: center; }
+      .hero h1 { font-size: clamp(36px, 4.6vw, 54px); font-weight: 800; margin-bottom: 20px; }
+      .hero h1 .hl { color: var(--green); }
+      .hero .lead { font-size: 19.5px; color: var(--ink-2); max-width: 520px; margin-bottom: 32px; }
+      .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
+      .hero-points { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+      .hero-points li { display: flex; gap: 10px; align-items: flex-start; font-weight: 600; color: var(--ink-2); font-size: 15.5px; }
+      .check {
+        flex: none; width: 22px; height: 22px; border-radius: 50%;
+        background: var(--mint); color: var(--green);
+        display: grid; place-items: center; margin-top: 2px;
+      }
+      .check svg { width: 12px; height: 12px; }
+
+      /* Dashboard mock */
+      .dash {
+        background: var(--surface); border: 1px solid var(--line);
+        border-radius: 22px; box-shadow: var(--shadow); overflow: hidden;
+      }
+      .dash-top {
+        display: flex; align-items: center; gap: 8px;
+        padding: 14px 18px; border-bottom: 1px solid var(--line);
+      }
+      .dot { width: 10px; height: 10px; border-radius: 50%; }
+      .dash-title { margin-left: 8px; font-family: "Sora", sans-serif; font-size: 13.5px; font-weight: 700; color: var(--ink-2); }
+      .dash-live { margin-left: auto; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); background: var(--mint); padding: 4px 10px; border-radius: 999px; }
+      .dash-body { padding: 20px; display: grid; gap: 16px; }
+      .dash-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .dash-card { border: 1px solid var(--line); border-radius: 14px; padding: 13px 14px; }
+      .dash-card .lbl { font-size: 12px; font-weight: 700; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; }
+      .dash-card .val { font-family: "Sora", sans-serif; font-weight: 700; font-size: 16.5px; margin-top: 3px; display: flex; align-items: center; gap: 7px; }
+      .pill { font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 999px; }
+      .pill-ok { background: var(--mint); color: var(--green); }
+      .pill-warn { background: var(--amber-soft); color: var(--amber-ink); }
+      .dash-row { display: flex; align-items: center; gap: 12px; border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+      .dash-row .who { font-weight: 700; font-size: 14.5px; }
+      .dash-row .what { font-size: 13px; color: var(--ink-3); }
+      .dash-row .st { margin-left: auto; flex: none; }
+      .dash-note { font-size: 12.5px; color: var(--ink-3); text-align: center; }
+
+      /* Trust strip */
+      .trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 34px 0; }
+      .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+      .trust-item .t-big { font-family: "Sora", sans-serif; font-weight: 800; font-size: 21px; color: var(--green); }
+      .trust-item p { color: var(--ink-2); font-size: 14.5px; margin-top: 4px; }
+
+      /* Porque */
+      .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+      .why-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 30px; }
+      .why-card h3 { font-size: 20px; margin-bottom: 10px; }
+      .why-card p { color: var(--ink-2); }
+      .why-ico {
+        width: 46px; height: 46px; border-radius: 13px; background: var(--mint); color: var(--green);
+        display: grid; place-items: center; margin-bottom: 18px;
+      }
+      .why-ico svg { width: 23px; height: 23px; }
+
+      /* Steps */
+      .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; counter-reset: step; }
+      .step { padding: 28px; border-radius: 18px; background: var(--bg-softer); border: 1px solid var(--line); }
+      .step .num {
+        font-family: "Sora", sans-serif; font-weight: 800; font-size: 14px;
+        width: 36px; height: 36px; border-radius: 50%;
+        background: var(--green); color: #fff; display: grid; place-items: center; margin-bottom: 16px;
+      }
+      .step h3 { font-size: 18.5px; margin-bottom: 8px; }
+      .step p { color: var(--ink-2); font-size: 15.5px; }
+
+      /* Soluções */
+      .sol-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+      .sol-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 28px;
+        display: flex; flex-direction: column; gap: 10px;
+      }
+      .sol-card .tag { font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber-ink); }
+      .sol-card h3 { font-size: 19.5px; }
+      .sol-card p { color: var(--ink-2); font-size: 15.5px; }
+
+      /* Recuperação */
+      .dark-section { background: var(--dark-bg); color: var(--dark-ink); }
+      .dark-section .eyebrow { color: var(--amber); }
+      .dark-section .section-head p { color: var(--dark-ink-2); }
+      .rec-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: start; }
+      .rec-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+      .rec-list li {
+        display: flex; gap: 12px; align-items: flex-start;
+        background: rgba(255, 255, 255, 0.05); border: 1px solid var(--dark-line);
+        border-radius: 14px; padding: 15px 17px; font-weight: 600; font-size: 15.5px;
+      }
+      .rec-list .check { background: rgba(240, 165, 30, 0.18); color: var(--amber); }
+      .calc {
+        background: #ffffff; color: #12211b; border-radius: 20px; padding: 30px;
+        box-shadow: var(--shadow);
+      }
+      @media (prefers-color-scheme: dark) { .calc { background: #132219; color: var(--ink); } }
+      .calc h3 { font-size: 20px; margin-bottom: 6px; }
+      .calc .calc-sub { color: var(--ink-2); font-size: 14.5px; margin-bottom: 22px; }
+      .calc label { display: block; font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+      .calc input[type="number"] {
+        width: 100%; padding: 13px 15px; border-radius: 12px; font: inherit; font-size: 16px;
+        border: 1.5px solid var(--line); background: var(--bg); color: var(--ink); margin-bottom: 20px;
+      }
+      .calc input[type="range"] { width: 100%; accent-color: var(--green); margin: 4px 0 20px; }
+      .range-line { display: flex; justify-content: space-between; align-items: baseline; }
+      .range-val { font-family: "Sora", sans-serif; font-weight: 700; color: var(--green); }
+      .calc-result { background: var(--bg-soft); border-radius: 14px; padding: 18px; text-align: center; }
+      .calc-result .r-lbl { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); }
+      .calc-result .r-val { font-family: "Sora", sans-serif; font-weight: 800; font-size: 32px; color: var(--green); margin-top: 2px; }
+      .calc-note { font-size: 12.5px; color: var(--ink-3); margin-top: 14px; }
+      .deliver-list { list-style: none; margin: 0 0 6px; padding: 0; display: grid; gap: 15px; }
+      .deliver-list li { display: flex; gap: 11px; align-items: flex-start; font-size: 15.5px; color: var(--ink-2); }
+      .deliver-list strong { color: var(--ink); }
+
+      /* Planos */
+      .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
+      .price-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px;
+        display: flex; flex-direction: column;
+      }
+      .price-card.featured { border: 2px solid var(--green); box-shadow: var(--shadow-sm); position: relative; }
+      .price-badge {
+        position: absolute; top: -14px; left: 32px;
+        background: var(--amber); color: #231a00; font-family: "Sora", sans-serif;
+        font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+        padding: 5px 12px; border-radius: 999px;
+      }
+      .price-card .plan { font-family: "Sora", sans-serif; font-weight: 800; font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+      .price-val { font-family: "Sora", sans-serif; font-weight: 800; font-size: 44px; margin: 14px 0 2px; }
+      .price-val small { font-size: 19px; font-weight: 700; color: var(--ink-3); }
+      .price-cap { color: var(--ink-2); font-size: 14.5px; margin-bottom: 20px; }
+      .price-card ul { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 10px; }
+      .price-card ul li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: var(--ink-2); font-weight: 600; }
+      .price-card .btn { margin-top: auto; justify-content: center; }
+      .features-strip { margin-top: 44px; background: var(--bg-soft); border-radius: 18px; padding: 28px 32px; }
+      .features-strip h3 { font-size: 17px; margin-bottom: 16px; }
+      .features-strip ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+      .features-strip li {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+        padding: 8px 16px; font-weight: 700; font-size: 14px; color: var(--ink-2);
+      }
+      .price-note { text-align: center; color: var(--ink-3); font-size: 14.5px; margin-top: 22px; }
+
+      /* Segmentos */
+      .seg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      .seg {
+        border: 1px solid var(--line); border-radius: 16px; padding: 22px;
+        font-family: "Sora", sans-serif; font-weight: 700; font-size: 16.5px; text-align: center;
+        background: var(--surface);
+      }
+      .seg small { display: block; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 13.5px; color: var(--ink-3); margin-top: 5px; }
+
+      /* Blog */
+      .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+      .post {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 30px;
+        display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: var(--ink);
+      }
+      .post:hover { border-color: var(--green); }
+      .post .cat { font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); }
+      .post h3 { font-size: 20.5px; line-height: 1.3; }
+      .post p { color: var(--ink-2); font-size: 15.5px; }
+      .post .read { margin-top: auto; font-weight: 800; color: var(--green); font-size: 15px; }
+
+      /* FAQ */
+      .faq { max-width: 820px; margin: 0 auto; display: grid; gap: 12px; }
+      .faq-item { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); overflow: hidden; }
+      .faq-q {
+        width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+        background: none; border: none; cursor: pointer; text-align: left;
+        font-family: "Sora", sans-serif; font-weight: 700; font-size: 17px; color: var(--ink);
+        padding: 20px 24px;
+      }
+      .faq-q .chev { flex: none; transition: transform 0.2s ease; color: var(--green); font-size: 20px; line-height: 1; }
+      .faq-item.open .faq-q .chev { transform: rotate(45deg); }
+      .faq-a { display: none; padding: 0 24px 22px; color: var(--ink-2); }
+      .faq-item.open .faq-a { display: block; }
+
+      /* Contato */
+      .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 52px; align-items: start; }
+      .contact-info h2 { font-size: clamp(30px, 4vw, 40px); margin-bottom: 14px; }
+      .contact-info p { color: var(--ink-2); margin-bottom: 26px; }
+      .social-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+      .social-list a, .social-list span.item {
+        display: flex; align-items: center; gap: 13px; text-decoration: none; color: var(--ink);
+        font-weight: 700; font-size: 15.5px;
+      }
+      .social-ico {
+        width: 42px; height: 42px; border-radius: 12px; background: var(--mint); color: var(--green);
+        display: grid; place-items: center; flex: none;
+      }
+      .social-ico svg { width: 20px; height: 20px; }
+      .social-list small { display: block; color: var(--ink-3); font-weight: 600; font-size: 13px; }
+      form.lead {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+        padding: 32px; box-shadow: var(--shadow-sm); display: grid; gap: 16px;
+      }
+      form.lead h3 { font-size: 21px; }
+      .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      form.lead label { display: block; font-weight: 700; font-size: 14px; margin-bottom: 7px; }
+      form.lead input, form.lead select, form.lead textarea {
+        width: 100%; padding: 13px 15px; border-radius: 12px; font: inherit; font-size: 15.5px;
+        border: 1.5px solid var(--line); background: var(--bg); color: var(--ink);
+      }
+      form.lead input:focus, form.lead select:focus, form.lead textarea:focus { outline: 2px solid var(--green); outline-offset: 1px; }
+      .form-msg {
+        display: none; border-radius: 12px; padding: 14px 16px; font-size: 14.5px; font-weight: 600;
+        background: var(--amber-soft); color: var(--amber-ink);
+      }
+      .form-msg.show { display: block; }
+
+      /* CTA final */
+      .final-cta { background: var(--green-800); border-radius: 26px; padding: 56px 48px; text-align: center; color: #eef7f1; }
+      @media (prefers-color-scheme: dark) { .final-cta { background: #0e3a2a; } }
+      .final-cta h2 { font-size: clamp(28px, 3.6vw, 38px); margin-bottom: 14px; }
+      .final-cta p { color: #b9d2c3; max-width: 560px; margin: 0 auto 30px; }
+
+      /* Footer */
+      footer { border-top: 1px solid var(--line); padding: 56px 0 36px; background: var(--bg-softer); }
+      .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 36px; margin-bottom: 40px; }
+      footer h4 { font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 16px; }
+      footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+      footer ul a { color: var(--ink-2); text-decoration: none; font-weight: 600; font-size: 15px; }
+      footer ul a:hover { color: var(--green); }
+      .foot-brand p { color: var(--ink-2); font-size: 14.5px; margin-top: 14px; max-width: 300px; }
+      .foot-bottom { border-top: 1px solid var(--line); padding-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; color: var(--ink-3); font-size: 13.5px; }
+
+      /* Conteúdo sempre visível: sem animação de entrada que esconda seções. */
+      .reveal { opacity: 1; }
+
+      @media (max-width: 1020px) {
+        .sol-grid { grid-template-columns: repeat(2, 1fr); }
+        .trust-grid { grid-template-columns: repeat(2, 1fr); }
+        .seg-grid { grid-template-columns: repeat(2, 1fr); }
+        .foot-grid { grid-template-columns: 1fr 1fr; }
+      }
+      @media (max-width: 880px) {
+        section { padding: 68px 0; }
+        .hero { padding: 56px 0 68px; }
+        .hero-grid, .rec-grid, .contact-grid { grid-template-columns: 1fr; }
+        .price-grid, .steps { grid-template-columns: 1fr; }
+        nav.main-nav {
+          display: none; position: absolute; top: 72px; left: 0; right: 0;
+          background: var(--bg); border-bottom: 1px solid var(--line); padding: 12px 24px 20px;
+        }
+        nav.main-nav.open { display: block; }
+        nav.main-nav ul { flex-direction: column; gap: 4px; }
+        nav.main-nav a { display: block; padding: 10px 0; font-size: 17px; }
+        .header-cta { display: none; }
+        .menu-btn { display: inline-flex; }
+        .why-grid, .blog-grid { grid-template-columns: 1fr; }
+        .f-row { grid-template-columns: 1fr; }
+        .final-cta { padding: 44px 26px; }
+        form.lead, .calc { padding: 24px; }
+      }
+      @media (max-width: 560px) {
+        .sol-grid, .trust-grid, .seg-grid, .dash-cards { grid-template-columns: 1fr; }
+        .foot-grid { grid-template-columns: 1fr; }
+        .hero-ctas .btn { width: 100%; justify-content: center; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap header-in">
+        <a class="brand" href="#inicio" aria-label="Vector Prime, início">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M3 17.5 8.5 12l3.5 3.5L20.5 7" stroke="#f0a51e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.5 7h6v6" stroke="#f0a51e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span>
+            <span class="brand-name">Vector<span>Prime</span></span>
+            <span class="brand-sub">Inteligência de liquidez</span>
+          </span>
+        </a>
+        <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+        <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+          <ul>
+            <li><a href="#porque">Porque Vector Prime</a></li>
+            <li><a href="#indicadores">Indicadores</a></li>
+            <li><a href="#programa">Programa 10 empresas</a></li>
+            <li><a href="#comparativo">Comparativo</a></li>
+            <li><a href="#cfo">Para o CFO</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn-primary btn-sm header-cta" href="#contato">Agendar conversa</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- INÍCIO -->
+      <div class="hero" id="inicio">
+        <div class="wrap hero-grid">
+          <div>
+            <span class="eyebrow">Para CFOs e gestores financeiros</span>
+            <h1>A liquidez real do seu caixa, <span class="hl">numa só visão</span></h1>
+            <p class="lead">O ERP mostra quanto você tem a receber. O Vector Prime mostra quanto disso vira caixa livre, quanto custa antecipar e o que está comprometido na registradora, a partir da sua conciliação de cartões.</p>
+            <div class="hero-ctas">
+              <a class="btn btn-primary" href="#contato">Agendar 20 minutos</a>
+              <a class="btn btn-ghost" href="#programa">Conhecer o programa gratuito</a>
+            </div>
+            <ul class="hero-points">
+              <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>KPIs operacionais e financeiros dos recebíveis de cartão, consolidados</li>
+              <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Visão independente de adquirentes, bancos e financiadores</li>
+              <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Útil para quem antecipa recebíveis e para quem não antecipa</li>
+            </ul>
+          </div>
+          <div>
+            <div class="dash" role="img" aria-label="Visão ilustrativa do painel Vector Prime, com caixa livre projetado, custo de antecipação e monitoramento de cessão e gravame">
+              <div class="dash-top">
+                <span class="dot" style="background:#e0655a"></span>
+                <span class="dot" style="background:#f0a51e"></span>
+                <span class="dot" style="background:#12a15e"></span>
+                <span class="dash-title">Painel Vector Prime</span>
+                <span class="dash-live">Posição do dia</span>
+              </div>
+              <div class="dash-body">
+                <div class="dash-cards">
+                  <div class="dash-card">
+                    <div class="lbl">Caixa livre</div>
+                    <div class="val">Projetado <span class="pill pill-ok">OK</span></div>
+                  </div>
+                  <div class="dash-card">
+                    <div class="lbl">Custo de antecipação</div>
+                    <div class="val">Comparado <span class="pill pill-warn">Revisar</span></div>
+                  </div>
+                  <div class="dash-card">
+                    <div class="lbl">Cessão e gravame</div>
+                    <div class="val">R$ 0,00 <span class="pill pill-ok">OK</span></div>
+                  </div>
+                </div>
+                <svg viewBox="0 0 520 120" role="presentation" aria-hidden="true">
+                  <path d="M0 96 C60 92 90 70 140 72 C190 74 215 48 270 50 C325 52 350 30 405 28 C455 26 490 16 520 12 L520 120 L0 120 Z" fill="var(--mint)"/>
+                  <path d="M0 96 C60 92 90 70 140 72 C190 74 215 48 270 50 C325 52 350 30 405 28 C455 26 490 16 520 12" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                <div class="dash-row">
+                  <div>
+                    <div class="who">Retenção acima do contratado</div>
+                    <div class="what">Adquirente reteve além do valor da operação</div>
+                  </div>
+                  <span class="pill pill-warn st">Divergência</span>
+                </div>
+                <div class="dash-row">
+                  <div>
+                    <div class="who">Operação na registradora</div>
+                    <div class="what">Gravame sem consentimento da empresa sinalizado</div>
+                  </div>
+                  <span class="pill pill-warn st">Alerta</span>
+                </div>
+                <div class="dash-row">
+                  <div>
+                    <div class="who">Entradas futuras</div>
+                    <div class="what">Agenda por adquirente e bandeira atualizada</div>
+                  </div>
+                  <span class="pill pill-ok st">Atualizado</span>
+                </div>
+              </div>
+            </div>
+            <p class="dash-note" style="margin-top:12px">Visão ilustrativa da plataforma.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CREDIBILIDADE -->
+      <div class="trust">
+        <div class="wrap trust-grid">
+          <div class="trust-item reveal">
+            <div class="t-big">Liquidez real</div>
+            <p>Caixa livre projetado sobre dados conciliados, e não sobre o saldo contábil.</p>
+          </div>
+          <div class="trust-item reveal">
+            <div class="t-big">100% independente</div>
+            <p>Sem vínculo com adquirentes, bancos ou financiadores. A leitura defende o seu caixa.</p>
+          </div>
+          <div class="trust-item reveal">
+            <div class="t-big">Adquirentes e B3</div>
+            <p>Agenda das adquirentes e registros de cessão e gravame lidos numa só base.</p>
+          </div>
+          <div class="trust-item reveal">
+            <div class="t-big">Rede Endeavor</div>
+            <p>Desenvolvido pela ATTA, de fundador da rede internacional Endeavor.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PORQUE VECTOR PRIME -->
+      <section id="porque">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="eyebrow">Porque Vector Prime</span>
+            <h2>O balanço mostra a liquidez contábil. O caixa vive da liquidez real.</h2>
+            <p>Entre o recebível registrado e o dinheiro disponível existem retenções, travas, cessões, gravames, antecipações e chargebacks. Nenhum desses números mora no mesmo sistema, e é na soma deles que a decisão de caixa erra.</p>
+          </div>
+          <div class="why-grid">
+            <article class="why-card reveal">
+              <div class="why-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2"/><path d="m20.5 20.5-4.6-4.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+              <h3>Você sabe quanto é caixa livre de fato</h3>
+              <p>O Vector Prime separa o que está a receber do que está livre para usar, descontando o que já foi cedido, travado ou retido. A decisão de caixa passa a partir do número certo.</p>
+            </article>
+            <article class="why-card reveal">
+              <div class="why-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V9m5.5 10V5M15 19v-8m5 8V7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+              <h3>O custo de antecipar fica visível</h3>
+              <p>Custo efetivo por operação, por adquirente e por período. Você enxerga quanto gastou para antecipar, quanto poderia ter evitado e onde existe margem para pagar menos.</p>
+            </article>
+            <article class="why-card reveal">
+              <div class="why-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 5 5.8v5.4c0 4.5 3 7.7 7 9.3 4-1.6 7-4.8 7-9.3V5.8L12 3Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="m9 11.8 2.2 2.2L15.5 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <h3>A registradora deixa de ser ponto cego</h3>
+              <p>Cessões e gravames monitorados todos os dias. Sem antecipação ativa, o saldo comprometido deve ficar em R$ 0,00, e qualquer operação feita sem o seu consentimento aparece sinalizada.</p>
+            </article>
+            <article class="why-card reveal">
+              <div class="why-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="13" rx="2.5" stroke="currentColor" stroke-width="2.2"/><path d="M8 12h3m2 0h3M8 15.2h8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+              <h3>Uma visão só, para a diretoria e o conselho</h3>
+              <p>Os KPIs operacionais e financeiros dos recebíveis de cartão consolidados num painel, prontos para a reunião de caixa, o comitê financeiro e o orçamento do ano seguinte.</p>
+            </article>
+          </div>
+
+          <div style="height:64px"></div>
+          <div class="section-head reveal">
+            <h2 style="font-size:clamp(26px,3.4vw,34px)">Como funciona</h2>
+          </div>
+          <div class="steps">
+            <div class="step reveal">
+              <div class="num">1</div>
+              <h3>A base conciliada entra no painel</h3>
+              <p>Agenda das adquirentes, conciliação de cartões e registros da registradora são reunidos numa só base, ao lado dos sistemas que você já usa.</p>
+            </div>
+            <div class="step reveal">
+              <div class="num">2</div>
+              <h3>Os indicadores são consolidados</h3>
+              <p>Caixa livre projetado, custo efetivo de antecipação, retenções, cessões, gravames e chargebacks são calculados por adquirente e bandeira.</p>
+            </div>
+            <div class="step reveal">
+              <div class="num">3</div>
+              <h3>Você decide com o número real</h3>
+              <p>Quando antecipar, quanto antecipar e quando não antecipar. Alertas mostram o que contestar e o que levar para a mesa de negociação.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INDICADORES -->
+      <section id="indicadores" class="section-soft">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="eyebrow">Indicadores</span>
+            <h2>Os KPIs que o seu ERP não junta</h2>
+            <p>Seis frentes de leitura que cobrem o caminho do recebível de cartão, da agenda da adquirente ao caixa disponível.</p>
+          </div>
+          <div class="sol-grid">
+            <article class="sol-card reveal">
+              <span class="tag">Agenda</span>
+              <h3>Recebíveis por adquirente e bandeira</h3>
+              <p>A agenda completa de entradas futuras, aberta por adquirente, bandeira e prazo, para saber de onde e quando o dinheiro vem.</p>
+            </article>
+            <article class="sol-card reveal">
+              <span class="tag">Projeção</span>
+              <h3>Caixa livre projetado</h3>
+              <p>Projeção das entradas livres de cessões, travas e retenções. A liquidez que a tesouraria pode de fato usar.</p>
+            </article>
+            <article class="sol-card reveal">
+              <span class="tag">Custo</span>
+              <h3>Custo efetivo de antecipação</h3>
+              <p>Quanto cada antecipação custou, comparado entre operações e adquirentes, para reduzir a dependência e negociar melhor.</p>
+            </article>
+            <article class="sol-card reveal">
+              <span class="tag">Registradora</span>
+              <h3>Cessão e gravame</h3>
+              <p>Monitoramento diário dos recebíveis comprometidos na registradora, com sinalização de operações realizadas sem consentimento da empresa.</p>
+            </article>
+            <article class="sol-card reveal">
+              <span class="tag">Retenções</span>
+              <h3>Travas e retenções</h3>
+              <p>Valores retidos pelas adquirentes acima do contratado, identificados antes que pesem no capital de giro.</p>
+            </article>
+            <article class="sol-card reveal">
+              <span class="tag">Histórico</span>
+              <h3>Cancelamentos e chargebacks</h3>
+              <p>Série histórica de cancelamentos e chargebacks por adquirente, para entender o que corrói o recebível ao longo do tempo.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRAMA 10 EMPRESAS -->
+      <section id="programa" class="dark-section">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="eyebrow">Programa 10 empresas</span>
+            <h2>Vector Prime sem custo até 31/12/2026</h2>
+            <p>Com juros altos e o orçamento de 2027 na mesa, abrimos o Vector Prime gratuitamente para 10 empresas selecionadas. O objetivo é direto: reduzir o que vocês gastam com antecipação e operações com recebíveis.</p>
+          </div>
+          <div class="rec-grid">
+            <div class="reveal">
+              <p style="color:var(--dark-ink-2); margin-bottom:20px; font-weight:600">No período de uso, o painel mostra, entre outros pontos:</p>
+              <ul class="rec-list">
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Quanto a empresa gastou com antecipação de recebíveis em 2026</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Custo efetivo de cada operação, por adquirente</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Recebíveis retidos além do contratado</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Cessões e gravames ativos na registradora</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Operações registradas sem o consentimento da empresa</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Onde existe margem para antecipar menos, ou mais barato</li>
+              </ul>
+              <a class="btn btn-amber" href="#contato" style="margin-top:26px">Quero uma das 10 vagas</a>
+            </div>
+            <div class="calc reveal" aria-label="O que a sua empresa leva do programa">
+              <h3>O que você leva para o orçamento 2027</h3>
+              <p class="calc-sub">O período de uso termina em material concreto para a mesa de planejamento, construído com os dados reais da sua operação.</p>
+              <ul class="deliver-list">
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Diagnóstico do custo de antecipação</strong> de 2026: quanto foi gasto e quanto poderia ter sido evitado.</span></li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Mapa da liquidez real</strong>, com caixa livre projetado e o que está comprometido na registradora.</span></li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Sem compromisso depois:</strong> ao fim do período, a empresa decide se continua.</span></li>
+              </ul>
+              <p class="calc-note">Vagas limitadas a 10 empresas, com uso até 31/12/2026. A seleção considera o volume de vendas no cartão e o uso de antecipação.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPARATIVO -->
+      <section id="comparativo">
+        <div class="wrap">
+          <div class="section-head center reveal">
+            <span class="eyebrow">Comparativo</span>
+            <h2>O que cada ferramenta mostra do seu caixa</h2>
+            <p>ERP e planilhas de tesouraria cumprem o papel deles. O Vector Prime não os substitui: junta o que eles deixam separado e mostra a liquidez que nenhum deles mostra sozinho.</p>
+          </div>
+          <div class="price-grid">
+            <article class="price-card reveal">
+              <div class="plan">ERP</div>
+              <div class="price-val" style="font-size:30px; padding:10px 0 6px">Liquidez contábil</div>
+              <p class="price-cap">Registra o que foi vendido e o que deveria entrar.</p>
+              <ul>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Contas a receber pelo valor contábil</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Lançamentos e baixas</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Base para o fechamento</li>
+              </ul>
+              <a class="btn btn-ghost" href="#indicadores">Ver o que fica de fora</a>
+            </article>
+            <article class="price-card reveal">
+              <div class="plan">Planilhas de tesouraria</div>
+              <div class="price-val" style="font-size:30px; padding:10px 0 6px">Visão parcial</div>
+              <p class="price-cap">Montadas à mão, dependem de quem atualiza.</p>
+              <ul>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Controle das operações de antecipação</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Projeções de fluxo de caixa</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Atualização manual, com defasagem</li>
+              </ul>
+              <a class="btn btn-ghost" href="#indicadores">Ver o que fica de fora</a>
+            </article>
+            <article class="price-card featured reveal">
+              <span class="price-badge">Visão completa</span>
+              <div class="plan">Vector Prime</div>
+              <div class="price-val" style="font-size:30px; padding:10px 0 6px">Liquidez real</div>
+              <p class="price-cap">Os KPIs operacionais e financeiros, numa só visão, independente.</p>
+              <ul>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Caixa livre projetado sobre base conciliada</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Cessão e gravame monitorados todos os dias</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Custo efetivo e visão por adquirente e bandeira</li>
+              </ul>
+              <a class="btn btn-primary" href="#contato">Agendar conversa</a>
+            </article>
+          </div>
+          <div class="features-strip reveal">
+            <h3>Indicadores no painel</h3>
+            <ul>
+              <li>Agenda de recebíveis</li>
+              <li>Caixa livre projetado</li>
+              <li>Custo efetivo de antecipação</li>
+              <li>Cessão e gravame</li>
+              <li>Travas e retenções</li>
+              <li>Chargebacks históricos</li>
+              <li>Visão por adquirente e bandeira</li>
+            </ul>
+          </div>
+          <p class="price-note">O Vector Prime parte de uma base conciliada. Se a sua empresa ainda não concilia os cartões, o Conciliador ATTA cobre essa etapa.</p>
+        </div>
+      </section>
+
+      <!-- SEGMENTOS -->
+      <section class="section-soft" style="padding-top:72px; padding-bottom:72px">
+        <div class="wrap">
+          <div class="section-head reveal" style="margin-bottom:36px">
+            <span class="eyebrow">Para quem é</span>
+            <h2 style="font-size:clamp(26px,3.4vw,34px)">Para operações em que o cartão pesa no caixa</h2>
+            <p>Quanto maior o volume no cartão e o número de adquirentes, maior a distância entre a liquidez contábil e a real.</p>
+          </div>
+          <div class="seg-grid">
+            <div class="seg reveal">Grande varejo<small>Redes com várias adquirentes e bandeiras</small></div>
+            <div class="seg reveal">Companhias aéreas<small>Vendas parceladas e prazos longos de recebimento</small></div>
+            <div class="seg reveal">E-commerce<small>Volume alto e agenda pulverizada</small></div>
+            <div class="seg reveal">Quem antecipa recebíveis<small>Ou quer parar de depender disso</small></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PARA O CFO -->
+      <section id="cfo">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="eyebrow">Para o CFO</span>
+            <h2>4 perguntas que o painel responde</h2>
+            <p>Perguntas que chegam à mesa do CFO toda semana e que, sem o Vector Prime, exigem cruzar sistemas, extratos e planilhas.</p>
+          </div>
+          <div class="blog-grid">
+            <article class="post reveal">
+              <span class="cat">Liquidez</span>
+              <h3>Quanto do nosso contas a receber é caixa livre hoje?</h3>
+              <p>O saldo contábil não desconta o que foi cedido, travado ou retido. O painel desconta, e mostra a projeção das entradas livres por prazo.</p>
+            </article>
+            <article class="post reveal">
+              <span class="cat">Custo de capital</span>
+              <h3>Quanto pagamos para antecipar recebíveis este ano?</h3>
+              <p>Custo efetivo por operação e por adquirente, somado no período. A base para decidir quando antecipar, quanto e com quem negociar.</p>
+            </article>
+            <article class="post reveal">
+              <span class="cat">Garantias</span>
+              <h3>O que está comprometido na registradora em nosso nome?</h3>
+              <p>Cessões e gravames ativos, monitorados todos os dias, com alerta para qualquer operação registrada sem o consentimento da empresa.</p>
+            </article>
+            <article class="post reveal">
+              <span class="cat">Orçamento 2027</span>
+              <h3>Qual linha de antecipação colocamos no orçamento do próximo ano?</h3>
+              <p>Com o histórico de custo e a projeção de caixa livre, a linha de antecipação deixa de ser estimativa e passa a ser número.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section-soft">
+        <div class="wrap">
+          <div class="section-head center reveal">
+            <span class="eyebrow">Perguntas frequentes</span>
+            <h2>Antes de agendar a conversa</h2>
+          </div>
+          <div class="faq">
+            <div class="faq-item reveal">
+              <button class="faq-q" aria-expanded="false">O Vector Prime serve para quem não antecipa recebíveis?<span class="chev">+</span></button>
+              <div class="faq-a"><p>Sim. A visão da liquidez real tem a mesma relevância para quem antecipa e para quem não antecipa. Sem antecipação ativa, o monitoramento da registradora confirma que nada está comprometido em nome da empresa, e a projeção de caixa livre orienta a gestão do capital de giro.</p></div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-q" aria-expanded="false">Ele substitui o ERP ou o conciliador?<span class="chev">+</span></button>
+              <div class="faq-a"><p>Não. O Vector Prime trabalha ao lado do ERP e a partir da conciliação de cartões. Ele junta, numa só visão, os indicadores que esses sistemas mantêm separados ou não calculam.</p></div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-q" aria-expanded="false">Preciso já ter conciliação de cartões?<span class="chev">+</span></button>
+              <div class="faq-a"><p>O Vector Prime parte de uma base conciliada, porque liquidez real só existe sobre dados conferidos. Se a empresa ainda não concilia, o Conciliador ATTA cobre essa etapa.</p></div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-q" aria-expanded="false">O Vector Prime tem vínculo com adquirentes ou financiadores?<span class="chev">+</span></button>
+              <div class="faq-a"><p>Não. A ATTA é independente de adquirentes, bancos e financiadores. A leitura dos dados é feita do lado da empresa.</p></div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-q" aria-expanded="false">Como funciona o programa gratuito para 10 empresas?<span class="chev">+</span></button>
+              <div class="faq-a"><p>As empresas selecionadas usam o Vector Prime sem custo até 31/12/2026. Ao final do período, recebem o diagnóstico do custo de antecipação e o mapa da liquidez real, e decidem se continuam. Não há compromisso de contratação.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTATO -->
+      <section id="contato">
+        <div class="wrap">
+          <div class="contact-grid">
+            <div class="contact-info reveal">
+              <span class="eyebrow">Contato</span>
+              <h2>Agende 20 minutos</h2>
+              <p>Conte como é a operação de cartões da sua empresa: adquirentes, volume e uso de antecipação. Na conversa, mostramos o painel e avaliamos se a sua empresa entra no programa gratuito.</p>
+              <ul class="social-list">
+                <li>
+                  <a href="https://institucional.atta-br.com/" target="_blank" rel="noopener">
+                    <span class="social-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="2"/><path d="M3.5 12h17M12 3.5c2.3 2.4 3.4 5.2 3.4 8.5s-1.1 6.1-3.4 8.5c-2.3-2.4-3.4-5.2-3.4-8.5S9.7 5.9 12 3.5Z" stroke="currentColor" stroke-width="2"/></svg></span>
+                    <span>Site institucional<small>institucional.atta-br.com</small></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://atta-br.github.io/vector-prime/" target="_blank" rel="noopener">
+                    <span class="social-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V9m5.5 10V5M15 19v-8m5 8V7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+                    <span>Vector Prime<small>Página do produto</small></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <form class="lead reveal" id="leadForm" novalidate>
+              <h3>Fale com a ATTA</h3>
+              <div class="f-row">
+                <div>
+                  <label for="fNome">Nome</label>
+                  <input id="fNome" name="nome" type="text" autocomplete="name" placeholder="Seu nome" />
+                </div>
+                <div>
+                  <label for="fCargo">Cargo</label>
+                  <input id="fCargo" name="cargo" type="text" autocomplete="organization-title" placeholder="CFO, diretor financeiro, tesouraria" />
+                </div>
+              </div>
+              <div class="f-row">
+                <div>
+                  <label for="fEmpresa">Empresa</label>
+                  <input id="fEmpresa" name="empresa" type="text" autocomplete="organization" placeholder="Nome da empresa" />
+                </div>
+                <div>
+                  <label for="fEmail">E-mail corporativo</label>
+                  <input id="fEmail" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com.br" />
+                </div>
+              </div>
+              <div class="f-row">
+                <div>
+                  <label for="fAntecipa">Uso de antecipação</label>
+                  <select id="fAntecipa" name="antecipacao">
+                    <option>Antecipamos com frequência</option>
+                    <option>Antecipamos às vezes</option>
+                    <option>Não antecipamos</option>
+                    <option>Prefiro conversar</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="fInteresse">Interesse</label>
+                  <select id="fInteresse" name="interesse">
+                    <option>Vaga no programa gratuito até 31/12/2026</option>
+                    <option>Demonstração do painel</option>
+                    <option>Proposta comercial</option>
+                    <option>Ainda não sei, quero uma orientação</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label for="fMsg">Mensagem</label>
+                <textarea id="fMsg" name="mensagem" rows="4" placeholder="Conte um pouco da operação: adquirentes, volume no cartão, principal dúvida sobre liquidez."></textarea>
+              </div>
+              <div class="form-msg" id="formMsg" role="status"></div>
+              <button type="submit" class="btn btn-primary" style="justify-content:center">Agendar conversa</button>
+            </form>
+          </div>
+
+          <div style="height:72px"></div>
+          <div class="final-cta reveal">
+            <h2>Você aprova com base em um número. O caixa recebe outro.</h2>
+            <p>O Vector Prime fecha essa distância: a posição real dos KPIs operacionais e financeiros dos seus recebíveis, numa só visão, independente.</p>
+            <a class="btn btn-amber" href="#contato">Agendar 20 minutos</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="foot-grid">
+          <div class="foot-brand">
+            <a class="brand" href="#inicio" aria-label="Vector Prime, início">
+              <span class="brand-mark" aria-hidden="true">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M3 17.5 8.5 12l3.5 3.5L20.5 7" stroke="#f0a51e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.5 7h6v6" stroke="#f0a51e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>
+                <span class="brand-name">Vector<span>Prime</span></span>
+                <span class="brand-sub">Inteligência de liquidez</span>
+              </span>
+            </a>
+            <p>Inteligência de liquidez para recebíveis de cartão, desenvolvida pela ATTA para CFOs e gestores financeiros.</p>
+          </div>
+          <div>
+            <h4>Site</h4>
+            <ul>
+              <li><a href="#inicio">Início</a></li>
+              <li><a href="#porque">Porque Vector Prime</a></li>
+              <li><a href="#indicadores">Indicadores</a></li>
+              <li><a href="#cfo">Para o CFO</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Vector Prime</h4>
+            <ul>
+              <li><a href="#programa">Programa 10 empresas</a></li>
+              <li><a href="#comparativo">Comparativo</a></li>
+              <li><a href="#contato">Agendar conversa</a></li>
+              <li><a href="#contato">Contato</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>ATTA</h4>
+            <ul>
+              <li><a href="https://institucional.atta-br.com/" target="_blank" rel="noopener">Site institucional</a></li>
+              <li><a href="https://atta-br.github.io/vector-prime/" target="_blank" rel="noopener">Página do Vector Prime</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <span>© 2026 ATTA. Todos os direitos reservados.</span>
+          <span>Liquidez real, independente de adquirentes e financiadores.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var menuBtn = document.getElementById('menuBtn');
+        var nav = document.getElementById('mainNav');
+        menuBtn.addEventListener('click', function () {
+          var open = nav.classList.toggle('open');
+          menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        nav.addEventListener('click', function (e) {
+          if (e.target.tagName === 'A') {
+            nav.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        var faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(function (item) {
+          var q = item.querySelector('.faq-q');
+          q.addEventListener('click', function () {
+            var isOpen = item.classList.contains('open');
+            faqItems.forEach(function (other) {
+              other.classList.remove('open');
+              other.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+            });
+            if (!isOpen) {
+              item.classList.add('open');
+              q.setAttribute('aria-expanded', 'true');
+            }
+          });
+        });
+
+        var form = document.getElementById('leadForm');
+        var msg = document.getElementById('formMsg');
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          msg.textContent = 'Obrigado pelo interesse. Nesta primeira versão do site novo, o formulário é demonstrativo e ainda não envia os dados: o destino dos leads será definido em seguida. Use os canais ao lado para falar com a ATTA agora.';
+          msg.classList.add('show');
+          msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in');
+                io.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.12 });
+          document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+        } else {
+          document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+        }
+      })();
+    </script>
+  </body>
+</html>
